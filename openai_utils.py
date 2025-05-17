@@ -5,7 +5,7 @@ import random
 from dotenv import load_dotenv
 
 load_dotenv()
-client = OpenAI()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def ask_question(round_type, session):
     with open(f'interview_data/questions_{round_type}.json', 'r') as file:
