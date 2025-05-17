@@ -1,11 +1,11 @@
-import openai
+from openai import OpenAI
 import os
 import json
 import random
 from dotenv import load_dotenv
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI()
 
 def ask_question(round_type, session):
     with open(f'interview_data/questions_{round_type}.json', 'r') as file:
@@ -38,7 +38,7 @@ Respond in JSON format like:
 {{"feedback": "Your feedback here", "score": 6}}
 """
 
-    response = openai.chat.completions.create(
+    response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}]
     )
