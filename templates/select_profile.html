@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Job Profile - TwoDimension AI Interview</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #1f2c38;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 24px;
+            font-size: 24px;
+            color: #f0f0f0;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #00bcd4;
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Job Profile / Interview Type</h2>
+        <form method="post">
+            <label><input type="radio" name="profile" value="technical" required> Technical Round Only</label>
+            <label><input type="radio" name="profile" value="hr"> HR Round Only</label>
+            <label><input type="radio" name="profile" value="both"> Both Rounds (Technical + HR)</label>
+            <button type="submit">Start Interview</button>
+        </form>
+    </div>
+</body>
+</html>

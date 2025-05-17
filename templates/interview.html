@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interview - TwoDimension AI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #1c1c1c, #2e2e2e);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #2f2f2f;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #f1f1f1;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #00bcd4;
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+        }
+
+        h4 {
+            margin-top: 30px;
+            color: #dddddd;
+        }
+
+        p {
+            background-color: #444;
+            padding: 15px;
+            border-radius: 8px;
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Question: {{ question }}</h3>
+        <form method="post">
+            <input type="hidden" name="question" value="{{ question }}">
+            <textarea name="answer" rows="6" placeholder="Your Answer..." required></textarea>
+            <button type="submit">Submit Answer</button>
+        </form>
+
+        {% if feedback %}
+            <h4>Feedback:</h4>
+            <p>{{ feedback }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
