@@ -1,24 +1,22 @@
-from openai import OpenAI
+import openai
 import os
 import json
 import random
 from dotenv import load_dotenv
 
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def ask_question(round_type, session):
     with open(f'interview_data/questions_{round_type}.json', 'r') as file:
         questions = json.load(file)
 
-    # Get asked list from session
     asked_key = f"asked_{round_type}"
     asked = session.get(asked_key, [])
 
-    # Filter out already asked
     remaining = [q for q in questions if q not in asked]
     if not remaining:
-        remaining = questions  # Reset if all used
+        remaining = questions
 
     question = random.choice(remaining)
     asked.append(question)
@@ -40,13 +38,11 @@ Respond in JSON format like:
 {{"feedback": "Your feedback here", "score": 6}}
 """
 
-    response = client.chat.completions.create(
+    response = openai.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}]
     )
 
-    # Parse the JSON response safely
-    import json
     text = response.choices[0].message.content.strip()
 
     try:
